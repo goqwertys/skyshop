@@ -56,7 +56,7 @@ def load_categories_from_json(filepath) -> list[Category] | list[None]:
         for category_data in data:
             logger.info(f"Creating category: {category_data['name']}")
             category = Category(category_data["name"], category_data["description"])
-            for product_data in category_data:
+            for product_data in category_data["products"]:
                 logger.info(f"Creating product: {product_data['name']} for category: {category.name}")
                 product = Product(
                     product_data["name"],

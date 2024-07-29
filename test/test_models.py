@@ -1,4 +1,15 @@
-from src.models import Product, Category
+import pytest
+
+from src.models import Category, Product
+
+
+@pytest.fixture(autouse=True)
+def reset_category_count():
+    # Reset category count before each test
+    Category.category_count = 0
+    Category.product_count = 0
+    yield
+    # Optionally, you can add cleanup code here if needed
 
 
 def test_product_initialization():
@@ -28,7 +39,6 @@ def test_add_product_to_category():
 
 
 def test_category_count():
-    Category.category_count = 0  # Reset count for testing
     category1 = Category("Electronics", "Electronic devices")
     category2 = Category("Clothing", "Clothing items")
     assert Category.category_count == 2
