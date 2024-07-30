@@ -16,3 +16,9 @@ def product():
 @pytest.fixture
 def category():
     return Category("Fruits", "Fresh fruits")
+
+
+@pytest.fixture(autouse=True)
+def reset_counters():
+    Category.category_count = 0
+    Category.product_count = 0
