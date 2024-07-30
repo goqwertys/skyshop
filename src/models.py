@@ -65,6 +65,9 @@ class Product:
         product_list.append(new_product)
         return new_product
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.count} шт."
+
 
 class Category:
     """Represents a category of products"""
@@ -90,7 +93,7 @@ class Category:
 
     def print_products(self):
         for product in self.__products:
-            print(f"{product.name}, {product.price} руб. Остаток: {product.count} шт.")
+            print(product)
 
 
 def load_categories_from_json(filepath) -> list[Category] | list[None]:
