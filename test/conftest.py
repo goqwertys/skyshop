@@ -1,6 +1,6 @@
 import pytest
 
-from src.models import Product
+from src.models import Product, Category
 
 
 @pytest.fixture
@@ -11,3 +11,8 @@ def product():
         10.0,
         5
     )
+
+
+@pytest.fixture
+def category():
+    return Category("Fruits", "Fresh fruits")
