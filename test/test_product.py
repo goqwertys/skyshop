@@ -45,3 +45,11 @@ def test_create_product_existing(monkeypatch, product):
     assert existing_product.price == 10.0
     assert existing_product.count == 7
     assert len(product_list) == 1
+
+
+def test_product_len(product):
+    assert len(product) == 5
+
+
+def test_product_str(product):
+    assert str(product) == "Apple, 10.0 руб. Остаток: 5 шт."
