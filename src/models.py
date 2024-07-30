@@ -22,8 +22,48 @@ class Product:
         """ Initialization of a new product """
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.count = count
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, price):
+        if price < 0:
+            print("Некорректная цена")
+            return
+        if price < self.__price:
+            confirmation = input(f"""Вы действительно хотите изменить цену товару {self.name}
+            ({self.__price})р. --> ({price})р. (y/n)""")
+            if confirmation == "y":
+                self.__price = price
+        else:
+            self.__price = price
+
+    @classmethod
+    def create_product(
+            cls,
+            name: str,
+            description: str,
+            price: float,
+            count: int,
+            product_list: list
+    ):
+        """ Creates a product by checking if the same one is already in the list.
+        Updates the price and description in the existing one, adds if the product is not in the list"""
+        for product in product_list:
+            if product.name == name:
+                product.count += count
+                if product.price < price:
+                    product.price = price
+                product.description = description
+                return product
+
+        new_product = cls(name, description, price, count)
+        product_list.append(new_product)
+        return new_product
 
 
 class Category:
@@ -35,18 +75,26 @@ class Category:
         """ Initialization of a category """
         self.name = name
         self.description = description
-        self.products = []
+        self.__products = []
         Category.category_count += 1
 
     def add_product(self, product: Product):
         """ Add product to products list """
-        if product not in self.products:
-            self.products.append(product)
+        if product not in self.__products:
+            self.__products.append(product)
             Category.product_count += 1
+
+    @property
+    def products(self):
+        return self.__products
+
+    def print_products(self):
+        for product in self.__products:
+            print(f"{product.name}, {product.price} руб. Остаток: {product.count} шт.")
 
 
 def load_categories_from_json(filepath) -> list[Category] | list[None]:
-    """ Load categories and products from a JSON file """
+    """ Loads categories and products from a JSON file """
     logger.info(f"Loading categories from JSON file: {filepath}")
     try:
         with open(filepath, 'r', encoding="utf-8") as f:
