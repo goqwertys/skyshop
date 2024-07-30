@@ -27,3 +27,14 @@ def test_print_products(capsys, category, product):
     category.print_products()
     captured = capsys.readouterr()
     assert "Apple, 10.0 руб. Остаток: 5 шт." in captured.out
+
+
+def test_category_len(category, product):
+    category.add_product(product)
+    assert len(category) == 5
+
+
+def test_category_str(category, product):
+    category.add_product(product)
+    # f"{self.name}, количество продуктов: {len(self)} шт."
+    assert str(category) == "Fruits, количество продуктов: 5 шт."
