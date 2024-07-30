@@ -109,6 +109,23 @@ class Category:
         return f"{self.name}, количество продуктов: {len(self)} шт."
 
 
+class CategoryIterator:
+    def __init__(self, category: Category):
+        self.__category = category
+
+    def __iter__(self):
+        self.__products = self.__category.products
+        self.__index = -1
+        return self
+
+    def __next__(self):
+        if self.__index >= len(self.__products) - 1:
+            raise StopIteration
+        else:
+            self.__index += 1
+            return self.__products[self.__index]
+
+
 def load_categories_from_json(filepath) -> list[Category] | list[None]:
     """ Loads categories and products from a JSON file """
     logger.info(f"Loading categories from JSON file: {filepath}")
