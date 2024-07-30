@@ -98,9 +98,11 @@ class Category:
         for product in self.__products:
             print(product)
 
+    def __len__(self):
+        return sum(len(prod) for prod in self.__products)
+
     def __str__(self):
-        total_count = sum([len(prod) for prod in self.__products])
-        return f"{self.name}, количество продуктов: {total_count} шт."
+        return f"{self.name}, количество продуктов: {len(self)} шт."
 
 
 def load_categories_from_json(filepath) -> list[Category] | list[None]:
