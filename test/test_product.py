@@ -53,3 +53,7 @@ def test_product_len(product):
 
 def test_product_str(product):
     assert str(product) == "Apple, 10.0 руб. Остаток: 5 шт."
+
+
+def test_product_add(product, other_product):
+    assert product + other_product == 100.0

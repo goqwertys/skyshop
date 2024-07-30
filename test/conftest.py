@@ -12,6 +12,15 @@ def product():
         5
     )
 
+@pytest.fixture
+def other_product():
+    return Product(
+        "Bananas",
+        "Yellow",
+        5.0,
+        10
+    )
+
 
 @pytest.fixture
 def category():
