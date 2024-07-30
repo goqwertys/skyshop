@@ -71,6 +71,10 @@ class Product:
     def __len__(self):
         return self.count
 
+    def __add__(self, other):
+        if isinstance(other, Product):
+            return self.__price * self.count + other.__price * other.count
+
 
 class Category:
     """Represents a category of products"""
