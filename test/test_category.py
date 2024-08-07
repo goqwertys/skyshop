@@ -1,4 +1,4 @@
-from src.models import Category
+from src.category import Category
 
 
 def test_initialization(category):
