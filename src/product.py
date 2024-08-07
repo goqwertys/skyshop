@@ -71,8 +71,9 @@ Updates the price and description in the existing one, adds if the product is no
         return self.count
 
     def __add__(self, other):
-        if isinstance(other, Product):
+        if isinstance(other, type(self)):
             return self.__price * self.count + other.__price * other.count
+        raise TypeError("You can only apply add function to products of the same class.")
 
 
 class SmartPhone(Product):
@@ -85,7 +86,7 @@ class SmartPhone(Product):
             performance: int,
             model: str,
             memory: int,
-            color: int
+            color: str
     ):
         """ SmartPhone constructor """
         super().__init__(name, description, price, count)
