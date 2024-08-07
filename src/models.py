@@ -160,3 +160,39 @@ def load_categories_from_json(filepath) -> list[Category] | list[None]:
     except Exception as e:
         logger.error(f"An error has occurred: {e}")
         return []
+
+
+class SmartPhone(Product):
+    """ Represents a smartphone. <- Product """
+    def __init__(
+            self, name: str,
+            description: str,
+            price: float,
+            count: int,
+            performance: int,
+            model: str,
+            memory: int,
+            color: int
+    ):
+        super().__init__(name, description, price, count)
+        self.performance = performance
+        self.model = model
+        self.memory = memory,
+        self.color = color
+
+
+class LawnGrass(Product):
+    """ Represents a lown grass. <- Product """
+    def __init__(
+            self, name: str,
+            description: str,
+            price: float,
+            count: int,
+            manufacturer_country: str,
+            germination_period: str,
+            color: str
+    ):
+        super().__init__(name, description, price, count)
+        self.manufacturer_country = manufacturer_country
+        self.germination_period = germination_period
+        self.color = color
