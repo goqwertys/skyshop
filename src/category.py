@@ -15,6 +15,8 @@ class Category:
 
     def add_product(self, product: Product):
         """ Add product to products list """
+        if not issubclass(type(product), Product):
+            raise TypeError
         if product not in self.__products:
             self.__products.append(product)
             Category.product_count += 1
