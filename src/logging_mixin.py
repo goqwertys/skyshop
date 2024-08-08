@@ -3,8 +3,6 @@ class LoggingMixin:
         def format_value(value):
             if isinstance(value, str):
                 return f"'{value}'"
-            elif isinstance(value, tuple):
-                return str(value[0])
             else:
                 return str(value)
 

@@ -101,7 +101,7 @@ class SmartPhone(Product, LoggingMixin):
         super().__init__(name, description, price, count)
         self.performance = performance
         self.model = model
-        self.memory = memory,
+        self.memory = memory
         self.color = color
 
 
