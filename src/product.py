@@ -83,12 +83,9 @@ Updates the price and description in the existing one, adds if the product is no
         if isinstance(other, type(self)):
             return self.__price * self.count + other.__price * other.count
         raise TypeError("You can only apply add function to products of the same class.")
-    
-    def __repr__(self):
-        return super().__repr__()
 
 
-class SmartPhone(Product):
+class SmartPhone(Product, LoggingMixin):
     """ Represents a smartphone. <- Product """
     def __init__(
             self, name: str,
@@ -108,7 +105,7 @@ class SmartPhone(Product):
         self.color = color
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, LoggingMixin):
     """ Represents a lawn grass. <- Product """
     def __init__(
             self, name: str,
