@@ -1,6 +1,3 @@
-from src.product import Product, SmartPhone, LawnGrass
-
-
 def test_mixin_product_repr(product):
     assert repr(product) == "Product: ('Apple', 'Fresh apple', 10.0, 5)"
 
