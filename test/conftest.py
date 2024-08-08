@@ -1,6 +1,7 @@
 import pytest
 
-from src.models import Product, Category
+from src.category import Category
+from src.product import Product, SmartPhone, LawnGrass
 
 
 @pytest.fixture
@@ -42,3 +43,56 @@ def cars():
     cars.add_product(pr1)
     cars.add_product(pr2)
     return cars
+
+
+@pytest.fixture
+def smartphone_1():
+    return SmartPhone(
+        "Smartphone",
+        "Description",
+        500.0,
+        2,
+        800,
+        "ModelX",
+        128,
+        "Black"
+    )
+
+
+@pytest.fixture
+def smartphone_2():
+    return SmartPhone(
+        "Smartphone2",
+        "Description2",
+        600.0,
+        1,
+        900,
+        "ModelY",
+        256,
+        "White")
+
+
+@pytest.fixture
+def lawn_grass_1():
+    return LawnGrass(
+        "LawnGrass",
+        "Description",
+        20.0,
+        10,
+        "USA",
+        "Spring",
+        "Green"
+    )
+
+
+@pytest.fixture
+def lawn_grass_2():
+    return LawnGrass(
+        "LawnGrass_2",
+        "Description_2",
+        10.0,
+        20,
+        "Canada",
+        "Summer",
+        "Brown"
+    )

@@ -1,4 +1,5 @@
-from src.models import Product, Category, CategoryIterator
+from src.category import Category, CategoryIterator
+from src.product import Product
 
 
 def test_category_iterator_returns_all_products(cars):

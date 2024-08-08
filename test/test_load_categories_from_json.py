@@ -1,7 +1,7 @@
 import json
-import pytest
 from unittest.mock import mock_open, patch
-from src.models import load_categories_from_json
+
+from src.utils import load_categories_from_json
 
 
 def test_successful_load():
