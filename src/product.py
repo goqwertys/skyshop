@@ -3,6 +3,7 @@ import os
 from abc import ABC, abstractmethod
 
 from src.config import LOG_LEVEL
+from src.logging_mixin import LoggingMixin
 from src.paths import get_project_root
 
 # Logger init
@@ -22,7 +23,7 @@ class BaseProduct(ABC):
         pass
 
 
-class Product(BaseProduct):
+class Product(LoggingMixin, BaseProduct):
     """ Represents a product """
 
     def __init__(self, name: str, description: str, price: float, count: int):
@@ -82,6 +83,9 @@ Updates the price and description in the existing one, adds if the product is no
         if isinstance(other, type(self)):
             return self.__price * self.count + other.__price * other.count
         raise TypeError("You can only apply add function to products of the same class.")
+    
+    def __repr__(self):
+        return super().__repr__()
 
 
 class SmartPhone(Product):
