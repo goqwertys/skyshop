@@ -1,5 +1,6 @@
 import logging
 import os
+from abc import ABC, abstractmethod
 
 from src.config import LOG_LEVEL
 from src.paths import get_project_root
@@ -14,7 +15,14 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 
-class Product:
+class BaseProduct(ABC):
+    @classmethod
+    @abstractmethod
+    def create_product(cls, *args, **kwargs):
+        pass
+
+
+class Product(BaseProduct):
     """ Represents a product """
 
     def __init__(self, name: str, description: str, price: float, count: int):
