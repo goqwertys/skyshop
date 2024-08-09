@@ -30,6 +30,14 @@ class Category(BaseEntity):
         for product in self.__products:
             print(product)
 
+    def avg_price(self) -> int | float:
+        try:
+            total_price = sum(product.price * product.quantity for product in self.__products)
+            total_quantity = sum(product.quantity for product in self.__products)
+            return total_price / total_quantity
+        except ZeroDivisionError:
+            return 0
+
     def __len__(self):
         return sum(len(prod) for prod in self.__products)
 

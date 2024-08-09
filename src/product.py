@@ -86,6 +86,8 @@ Updates the price and description in the existing one, adds if the product is no
     def __add__(self, other):
         if isinstance(other, type(self)):
             return self.__price * self.quantity + other.__price * other.quantity
+        if isinstance(other, (int, float)):
+            return self.__price * self.quantity + other
         raise TypeError("You can only apply add function to products of the same class.")
 
 
