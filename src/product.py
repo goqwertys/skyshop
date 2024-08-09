@@ -30,7 +30,7 @@ class Product(LoggingMixin, BaseProduct):
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """ Initialization of a new product """
         if quantity < 1:
-            raise ZeroQuantityException()
+            raise ZeroQuantityException("Cannot create product with zero quantity")
         self.name = name
         self.description = description
         self.__price = price

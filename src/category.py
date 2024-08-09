@@ -21,6 +21,7 @@ class Category(BaseEntity):
         if product not in self.__products:
             self.__products.append(product)
             Category.product_count += 1
+        print(f"{product} added to {self}")
 
     @property
     def products(self):
