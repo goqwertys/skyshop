@@ -1,4 +1,7 @@
+import pytest
+
 from src.order import Order
+from src.exception import ZeroQuantityException
 
 
 def test_order_init(smartphone_1):
@@ -16,3 +19,8 @@ def test_order_len(smartphone_1):
 def test_order_str(smartphone_1):
     order_obj = Order(smartphone_1, 3)
     assert str(order_obj) == "Order('Smartphone', 3, 1500.0)"
+
+
+def test_order_zero_exception(smartphone_1):
+    with pytest.raises(ZeroQuantityException, match="Cannot create order with zero quantity"):
+        _ = Order(smartphone_1, 0)

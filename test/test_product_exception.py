@@ -10,7 +10,7 @@ def test_product_construct_exception():
 
 
 def test_smartphone_construct_zero_quantity():
-    with pytest.raises(ZeroQuantityException):
+    with pytest.raises(ZeroQuantityException, match="Cannot create product with zero quantity"):
         _ = SmartPhone(
             "Nokia",
             "Old but gold",
@@ -24,7 +24,7 @@ def test_smartphone_construct_zero_quantity():
 
 
 def test_lawn_grass_zero_quantity():
-    with (pytest.raises(ZeroQuantityException)):
+    with pytest.raises(ZeroQuantityException, match="Cannot create product with zero quantity"):
         _ = LawnGrass(
             "Magic Soil",
             "Doesn't exist",
