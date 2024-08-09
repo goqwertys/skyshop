@@ -5,7 +5,7 @@ def test_initialization(product):
     assert product.name == "Apple"
     assert product.description == "Fresh apple"
     assert product.price == 10.0
-    assert product.count == 5
+    assert product.quantity == 5
 
 
 def test_price_setter_invalid_price(capsys, product):
@@ -32,7 +32,7 @@ def test_create_product_new(product):
     assert new_product.name == "Banana"
     assert new_product.description == "Fresh banana"
     assert new_product.price == 15.0
-    assert new_product.count == 3
+    assert new_product.quantity == 3
     assert len(product_list) == 1
 
 
@@ -43,7 +43,7 @@ def test_create_product_existing(monkeypatch, product):
     assert existing_product.name == "Apple"
     assert existing_product.description == "Updated apple"
     assert existing_product.price == 10.0
-    assert existing_product.count == 7
+    assert existing_product.quantity == 7
     assert len(product_list) == 1
 
 
