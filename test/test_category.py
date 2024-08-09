@@ -77,8 +77,12 @@ def test_try_other_class_object():
 
 
 def test_category_avg_price(category):
-    pr_1 = Product("Banana", "Yellow", 10.0, 2) # ( 20 + 15 ) / 5 = 35/5 = 7
+    pr_1 = Product("Banana", "Yellow", 10.0, 2)  # (20 + 45) / 5
     pr_2 = Product("Apple", "Green", 15.0, 3)
     category.add_product(pr_1)
     category.add_product(pr_2)
-    assert category.avg_price == 7
+    assert category.avg_price() == 13
+
+
+def test_category_avg_price_zero(category):
+    assert category.avg_price() == 0
