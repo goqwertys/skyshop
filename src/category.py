@@ -21,6 +21,7 @@ class Category(BaseEntity):
         if product not in self.__products:
             self.__products.append(product)
             Category.product_count += 1
+        print(f"{product} added to {self}")
 
     @property
     def products(self):
@@ -29,6 +30,14 @@ class Category(BaseEntity):
     def print_products(self):
         for product in self.__products:
             print(product)
+
+    def avg_price(self) -> int | float:
+        try:
+            total_price = sum(product.price * product.quantity for product in self.__products)
+            total_quantity = sum(product.quantity for product in self.__products)
+            return total_price / total_quantity
+        except ZeroDivisionError:
+            return 0
 
     def __len__(self):
         return sum(len(prod) for prod in self.__products)

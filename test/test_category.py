@@ -1,6 +1,7 @@
 import pytest
 
 from src.category import Category
+from src.product import Product
 
 
 def test_initialization(category):
@@ -73,3 +74,15 @@ def test_try_other_class_object():
         test_obj = TestClass()
         test_category = Category("Test", "description")
         test_category.add_product(test_obj)
+
+
+def test_category_avg_price(category):
+    pr_1 = Product("Banana", "Yellow", 10.0, 2)  # (20 + 45) / 5
+    pr_2 = Product("Apple", "Green", 15.0, 3)
+    category.add_product(pr_1)
+    category.add_product(pr_2)
+    assert category.avg_price() == 13
+
+
+def test_category_avg_price_zero(category):
+    assert category.avg_price() == 0
