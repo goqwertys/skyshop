@@ -15,4 +15,4 @@ def test_add_product_lawn_grass(lawn_grass_1, lawn_grass_2):
 
 def test_add_two_different_products(smartphone_1, lawn_grass_2):
     with pytest.raises(TypeError, match="You can only apply add function to products of the same class."):
-        result = smartphone_1 + lawn_grass_2
+        _ = smartphone_1 + lawn_grass_2

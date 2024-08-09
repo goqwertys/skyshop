@@ -1,7 +1,8 @@
+from src.order import BaseEntity
 from src.product import Product
 
 
-class Category:
+class Category(BaseEntity):
     """Represents a category of products"""
     category_count = 0
     product_count = 0
@@ -34,6 +35,10 @@ class Category:
 
     def __str__(self):
         return f"{self.name}, количество продуктов: {len(self)} шт."
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.name}', category quant.: {self.category_count}, \
+product quant.: {self.product_count})"
 
 
 class CategoryIterator:

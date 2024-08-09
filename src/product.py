@@ -1,7 +1,9 @@
 import logging
 import os
+from abc import ABC, abstractmethod
 
 from src.config import LOG_LEVEL
+from src.logging_mixin import LoggingMixin
 from src.paths import get_project_root
 
 # Logger init
@@ -14,7 +16,14 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 
-class Product:
+class BaseProduct(ABC):
+    @classmethod
+    @abstractmethod
+    def create_product(cls, *args, **kwargs):
+        pass
+
+
+class Product(LoggingMixin, BaseProduct):
     """ Represents a product """
 
     def __init__(self, name: str, description: str, price: float, count: int):
@@ -76,7 +85,7 @@ Updates the price and description in the existing one, adds if the product is no
         raise TypeError("You can only apply add function to products of the same class.")
 
 
-class SmartPhone(Product):
+class SmartPhone(Product, LoggingMixin):
     """ Represents a smartphone. <- Product """
     def __init__(
             self, name: str,
@@ -92,11 +101,11 @@ class SmartPhone(Product):
         super().__init__(name, description, price, count)
         self.performance = performance
         self.model = model
-        self.memory = memory,
+        self.memory = memory
         self.color = color
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, LoggingMixin):
     """ Represents a lawn grass. <- Product """
     def __init__(
             self, name: str,
