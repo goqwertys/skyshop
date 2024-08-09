@@ -12,12 +12,19 @@ class BaseEntity(ABC):
     def __str__(self):
         pass
 
+    @abstractmethod
+    def avg_price(self):
+        pass
+
 
 class Order(BaseEntity):
     def __init__(self, product: Product, quantity: int):
         self.product = product
         self.quantity = quantity
         self.total_price = product.price * quantity
+
+    def avg_price(self):
+        pass
 
     def __len__(self):
         return self.quantity
